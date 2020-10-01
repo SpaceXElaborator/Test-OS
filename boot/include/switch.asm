@@ -19,4 +19,4 @@ init_cm:
 	mov ebp, 0x9000
 	mov esp, ebp
 
-	call
+	call Protected_Mode_Run
