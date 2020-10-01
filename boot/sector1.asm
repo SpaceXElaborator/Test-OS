@@ -29,14 +29,6 @@ EnableA20:
 %include "32bit_include/paging.asm"
 
 Protected_Mode_Run:
-	; basically resets all registries
-	mov ax, DATA_SEG
-	mov ds, ax
-	mov ss, ax
-	mov es, ax
-	mov fs, ax
-	mov gs, ax
-
 	; make sure that we have CPUID
 	call DetectCPUID
 	; make sure that we can even enter long mode
