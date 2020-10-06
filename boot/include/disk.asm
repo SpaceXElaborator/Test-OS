@@ -1,4 +1,4 @@
-PRO_SPA equ 0x7e00
+PRO_SPA equ 0x8000
 READ_DISK:
 	pusha
 	xor ax, ax
@@ -27,7 +27,7 @@ ret
 DiskAddressPacket:
 	.Size: db 0x10
 	.Unused: db 0x0
-	.SectorsToRead: dw 0x0001
+	.SectorsToRead: dw 0x0002
 	.Offset:	dw 0x7e00
 	.Segment:	dw 0x0
 	.LBA:		dq 1

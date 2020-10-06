@@ -32,5 +32,6 @@ DATA_SEG equ gdt_data - gdt_start
 GDT_Edit:
 	mov [gdt_code + 6], byte 10101111b
 	mov [gdt_data + 6], byte 10101111b
+	ret
 
 [bits 16]

@@ -50,7 +50,7 @@ Long_Mode_Run:
 	mov ecx, 500
 	rep stosq
 
-	call _start
+	;call _start
 	hlt
 
 STARTED_CM_JUMP: db "Attempting to load into 32bit", 0

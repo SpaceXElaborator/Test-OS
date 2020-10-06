@@ -2,6 +2,9 @@
 xor ax, ax
 mov es, ax
 mov ss, ax
+mov ds, ax
+jmp 0:csloaded
+csloaded:
 
 mov sp, 0x7c00
 sti

@@ -3,18 +3,18 @@ include $(root_dir)/scripts/config.mk
 
 tag := $(BLUE)[Kernel]$(NORMAL)
 
-default: Prosaiber.bin Prosaiber.elf
+default: Prosaiber.bin
 	@echo "$(tag) - Compiling..."
 
-kernel.o: kernel.c
-	x86_64-elf-gcc -ffreestanding -m64 -c $< -o $@
+kernel.o: kernel.cpp
+	x86_64-elf-gcc -Ttext 0x8000 -ffreestanding -m64 -c $< -o $@
 
-kernel.bin: sector1.o kernel.o
-	x86_64-elf-ld -o $@ -Ttext 0x7e00 $^ --oformat binary
+Kernel.bin: kernel.o
+	x86_64-elf-ld -T "link.ld" --oformat binary
 
 Prosaiber.elf: sector1.o kernel.o
 	@echo "$(tag) - Making debug..."
 	x86_64-elf-ld -o $(root_dir)/$@ -Ttext 0x7e00 $^
 
-Prosaiber.bin: bootloader.bin kernel.bin
+Prosaiber.bin: bootloader.bin Kernel.bin
 	cat $^ > $(root_dir)/$@
