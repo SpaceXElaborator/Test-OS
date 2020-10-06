@@ -5,7 +5,7 @@ READ_DISK:
 	xor dx, dx
 	xor bx, bx
 
-	.ForLoop:
+	.Start:
 		mov dl, byte [DRIVE_NUM]
 		mov ah, 0x42
 		mov si, DiskAddressPacket
@@ -14,7 +14,6 @@ READ_DISK:
 
 		mov bx, FAILED
 		call print_rm
-
 
 		cli
 		hlt
